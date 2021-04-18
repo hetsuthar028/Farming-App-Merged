@@ -15,8 +15,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
+import androidx.appcompat.app.AppCompatActivity
+
 import android.widget.Toast
 import androidx.core.graphics.toColorInt
+
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -142,7 +146,12 @@ class UserFragment : Fragment(), CellClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        setHasOptionsMenu(true)
+        (activity as AppCompatActivity).supportActionBar?.title = "Profile"
+
         addAboutTextUserFrag.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+
 
         viewModel.userProfilePostsLiveData.observe(viewLifecycleOwner, Observer {
 //            val adapter = PostListUserProfileAdapter(activity!!.applicationContext, it)
